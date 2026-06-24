@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAID CAMPAIGNA - HEX Digital Solutions</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../services/services-style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div id="service-page" class="service-page-root" data-service-page>
+
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="nav-logo" style="align-items:center; gap:0.5rem;">
+        <img src="../assets/imge/logo hex.png" alt="HEX Digital Solutions" style="width:50px; height:50px; object-fit:contain;">
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="../index.html#home" class="nav-link" data-section="home">Home</a></li>
+        <li class="nav-item"><a href="../index.html#about" class="nav-link" data-section="about">About Us</a></li>
+        <li class="nav-item"><a href="../index.html#services" class="nav-link active" data-section="services">Services</a></li>
+        <li class="nav-item"><a href="../index.html#clients" class="nav-link" data-section="clients">Clients</a></li>
+        <li class="nav-item"><a href="../index.html#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="lang-toggle" id="langToggle" title="تبديل اللغة">EN</button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="service-page-hero">
+    <img class="service-page-hero-img" src="../assets/imge/PAID CAMPAIGNA.png" alt="PAID CAMPAIGNA" />
+<div class="service-page-hero-overlay">
+      <h1 class="service-page-title" data-i18n="service-title-paid-campaigna">PAID CAMPAIGNA</h1>
+      <p class="service-page-subtitle" data-i18n="service-side-desc-paid-campaigna">Smart paid campaigns built on data. We optimize ads to improve CTR, leads, and ROAS over time.</p>
+    </div>
+  </section>
+
+  <main class="service-page">
+    <div class="service-page-main">
+      <div class="service-page-left">
+        <img class="service-page-left-img" src="../assets/imge/PAID CAMPAIGNA.png" alt="PAID CAMPAIGNA" />
+      </div>
+      <div class="service-page-right">
+<h2 class="service-page-right-title" data-i18n="service-side-title-paid-campaigna">What We Offer in Paid Campaigns?</h2>
+        <p class="service-page-right-desc" data-i18n="service-side-desc-paid-campaigna">Smart paid campaigns built on data. We optimize ads to improve CTR, leads, and ROAS over time.</p>
+      </div>
+    </div>
+
+<div class="service-page-full-desc">
+      <h3 data-i18n="service-full-title">Service Overview</h3>
+      <p data-i18n="service-side-desc-paid-campaigna">Smart paid campaigns built on data. We optimize ads to improve CTR, leads, and ROAS over time.</p>
+    </div>
+
+    <div class="service-page-clients">
+<h3 data-i18n="service-clients-title">Clients We’ve Worked With on This Service</h3>
+      <div class="service-page-clients-grid">
+        <div class="service-page-client">RetailHub</div>
+        <div class="service-page-client">TechCorp Inc.</div>
+        <div class="service-page-client">FoodDelivery+</div>
+        <div class="service-page-client">ConsultPro</div>
+      </div>
+    </div>
+
+<div class="service-page-back">
+      <a class="view-btn" href="../index.html#services" data-i18n="service-back-button"><i class="fas fa-arrow-right"></i> Back to Services</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 HEX Digital Solutions. All rights reserved.</p>
+  </footer>
+
+</div>
+<script src="../script.js"></script>
+<script src="services-script.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBWYI7mllS34T4Ue56OWSrl8luq0atheTU",
+    authDomain: "new-hex.firebaseapp.com",
+    projectId: "new-hex",
+    storageBucket: "new-hex.firebasestorage.app",
+    messagingSenderId: "614032021854",
+    appId: "1:614032021854:web:6b3b13e082e4e2ec4d57cf",
+    measurementId: "G-NXQE87P24L"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
+</html>
+

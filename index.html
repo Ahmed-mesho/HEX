@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEX - Digital Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="nav-logo" style="align-items:center; gap:0.5rem;">
+                <img src="assets/imge/logo hex.png" alt="HEX Digital Solutions" style="width:50px; height:50px; object-fit:contain;">
+            </div>
+
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-section="home" data-i18n="nav-home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-section="about" data-i18n="nav-about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link" data-section="services" data-i18n="nav-services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#clients" class="nav-link" data-section="clients" data-i18n="nav-clients">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-section="contact" data-i18n="nav-contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link" data-section="portfolio" data-i18n="nav-portfolio">Portfolio</a>
+                </li>
+            </ul>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="lang-toggle" id="langToggle" title="تبديل اللغة">
+                    EN
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="hero">
+        <div class="carousel-container">
+
+            <div class="carousel-slide active">
+                <div class="hero-slide-bg">
+                    <img src="assets/imge/BRANDING.png" alt="Slide 1" class="hero-slide-image" />
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-title" data-i18n="hero-title">Digital Solutions for Modern Businesses</h1>
+                    <p class="slide-subtitle" data-i18n="hero-subtitle">Transform your vision into reality with cutting-edge technology</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="hero-slide-bg">
+                    <img src="assets/imge/CONTENT CREATION.png" alt="Slide 2" class="hero-slide-image" />
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-title" data-i18n="hero-title2">Premium Web Development</h1>
+                    <p class="slide-subtitle" data-i18n="hero-subtitle2">Creating stunning digital experiences that drive results</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="hero-slide-bg">
+                    <img src="assets/imge/CREATIVE SOCIAL MEDIA DESIGNS.png" alt="Slide 3" class="hero-slide-image" />
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-title" data-i18n="hero-title3">Mobile Apps & Design</h1>
+                    <p class="slide-subtitle" data-i18n="hero-subtitle3">Innovative solutions for every platform</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <div class="hero-slide-bg">
+                    <img src="assets/imge/MEDIA PRODUCTION.png" alt="Slide 4" class="hero-slide-image" />
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-title" data-i18n="hero-title4">AI & Automation</h1>
+                    <p class="slide-subtitle" data-i18n="hero-subtitle4">Harness the power of artificial intelligence</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="hero-slide-bg">
+                    <img src="assets/imge/PAID CAMPAIGNA.png" alt="Slide 4" class="hero-slide-image" />
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-title" data-i18n="hero-title4">AI & Automation</h1>
+                    <p class="slide-subtitle" data-i18n="hero-subtitle4">Harness the power of artificial intelligence</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="hero-slide-bg">
+                    <img src="assets/imge/PROGRAMING.png" alt="Slide 4" class="hero-slide-image" />
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-title" data-i18n="hero-title4">AI & Automation</h1>
+                    <p class="slide-subtitle" data-i18n="hero-subtitle4">Harness the power of artificial intelligence</p>
+                </div>
+            </div>
+
+
+            <button class="carousel-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 data-i18n="about-title">About Us</h2>
+                <p data-i18n="about-subtitle">Who We Are and What We Do</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <h3 data-i18n="about-heading">Building Digital Excellence Since 2020</h3>
+                    <p data-i18n="about-desc1">
+                        HEX is a leading digital solutions company dedicated to transforming businesses through innovative technology and creative excellence. We specialize in web development, mobile applications, and digital marketing.
+                    </p>
+                    <p data-i18n="about-desc2">
+                        Our team of expert developers and designers work collaboratively to deliver solutions that exceed expectations and drive real business value.
+                    </p>
+
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <h4>500+</h4>
+                            <p data-i18n="stat-projects">Projects Completed</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>150+</h4>
+                            <p data-i18n="stat-clients">Happy Clients</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>50+</h4>
+                            <p data-i18n="stat-team">Team Members</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 data-i18n="services-title">Our Services</h2>
+                <p data-i18n="services-subtitle">Comprehensive Solutions for Your Business</p>
+            </div>
+
+            <div class="services-grid services-6-grid">
+                <div class="service-card service-image-card" data-service-id="branding" tabindex="0" role="button" aria-label="BRANDING">
+                    <img class="service-image" src="assets/imge/BRANDING.png" alt="BRANDING" />
+                    <h3 class="service-image-title" data-i18n="service-branding-title">BRANDING</h3>
+                    <button type="button" class="service-more-btn" data-i18n="service-more">More</button>
+                </div>
+
+                <div class="service-card service-image-card" data-service-id="content-creation" tabindex="0" role="button" aria-label="CONTENT CREATION">
+                    <img class="service-image" src="assets/imge/CONTENT CREATION.png" alt="CONTENT CREATION" />
+                    <h3 class="service-image-title" data-i18n="service-content-title">CONTENT CREATION</h3>
+                    <button type="button" class="service-more-btn" data-i18n="service-more">More</button>
+                </div>
+
+                <div class="service-card service-image-card" data-service-id="creative-social-media-designs" tabindex="0" role="button" aria-label="CREATIVE SOCIAL MEDIA DESIGNS">
+                    <img class="service-image" src="assets/imge/CREATIVE SOCIAL MEDIA DESIGNS.png" alt="CREATIVE SOCIAL MEDIA DESIGNS" />
+                    <h3 class="service-image-title" data-i18n="service-social-title">CREATIVE SOCIAL MEDIA DESIGNS</h3>
+                    <button type="button" class="service-more-btn" data-i18n="service-more">More</button>
+                </div>
+
+                <div class="service-card service-image-card" data-service-id="media-production" tabindex="0" role="button" aria-label="MEDIA PRODUCTION">
+                    <img class="service-image" src="assets/imge/MEDIA PRODUCTION.png" alt="MEDIA PRODUCTION" />
+                    <h3 class="service-image-title" data-i18n="service-media-title">MEDIA PRODUCTION</h3>
+                    <button type="button" class="service-more-btn" data-i18n="service-more">More</button>
+                </div>
+
+                <div class="service-card service-image-card" data-service-id="paid-campaigna" tabindex="0" role="button" aria-label="PAID CAMPAIGNA">
+                    <img class="service-image" src="assets/imge/PAID CAMPAIGNA.png" alt="PAID CAMPAIGNA" />
+                    <h3 class="service-image-title" data-i18n="service-paid-title">PAID CAMPAIGNA</h3>
+                    <button type="button" class="service-more-btn" data-i18n="service-more">More</button>
+                </div>
+
+                <div class="service-card service-image-card" data-service-id="programing" tabindex="0" role="button" aria-label="PROGRAMING">
+                    <img class="service-image" src="assets/imge/PROGRAMING.png" alt="PROGRAMING" />
+                    <h3 class="service-image-title" data-i18n="service-programing-title">PROGRAMING</h3>
+                    <button type="button" class="service-more-btn" data-i18n="service-more">More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Quick Modal -->
+    <div class="modal" id="serviceQuickModal">
+        <div class="modal-content modal-small">
+            <span class="close" id="closeServiceQuickModal">&times;</span>
+            <div class="modal-body" id="serviceQuickModalBody"></div>
+        </div>
+    </div>
+
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 data-i18n="clients-title">Our Clients</h2>
+                <p data-i18n="clients-subtitle">Companies that trust us with their digital transformation</p>
+            </div>
+
+            <div class="clients-carousel">
+                <div class="clients-slide active">
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>TechCorp Inc.</h4>
+                    </div>
+                </div>
+                <div class="clients-slide">
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h4>RetailHub</h4>
+                    </div>
+                </div>
+                <div class="clients-slide">
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4>EduPlatform</h4>
+                    </div>
+                </div>
+                <div class="clients-slide">
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h4>HealthCare Pro</h4>
+                    </div>
+                </div>
+                <div class="clients-slide">
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>FoodDelivery+</h4>
+                    </div>
+                </div>
+                <div class="clients-slide">
+                    <div class="client-card">
+                        <div class="client-logo">
+                            <i class="fas fa-suitcase"></i>
+                        </div>
+                        <h4>ConsultPro</h4>
+                    </div>
+                </div>
+            </div>
+
+            <button class="clients-btn prev" id="clientsPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="clients-btn next" id="clientsNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 data-i18n="contact-title">Contact Us</h2>
+                <p data-i18n="contact-subtitle">Get in touch with our team</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: #667eea;">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="contact-phone">Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                            <p>+1 (555) 123-4568</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: #f5576c;">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="contact-location">Location</h4>
+                            <p>123 Innovation Street</p>
+                            <p>San Francisco, CA 94105</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background: #4facfe;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4 data-i18n="contact-email">Email</h4>
+                            <p>info@hexdigital.com</p>
+                            <p>support@hexdigital.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <h3 data-i18n="contact-form-title">Send us a Message</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="contactName" placeholder="Your Name" data-i18n="form-name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contactEmail" placeholder="Your Email" data-i18n="form-email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="contactSubject" placeholder="Subject" data-i18n="form-subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contactMessage" placeholder="Your Message" data-i18n="form-message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-i18n="form-submit">Send Message</button>
+                        <div id="formStatus" style="margin-top: 1rem; text-align: center;"></div>
+                    </form>
+                </div>
+
+                <div class="contact-social">
+                    <h3 data-i18n="contact-follow">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://wa.me/1234567890" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="social-btn facebook" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="social-btn instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="social-btn tiktok" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+
+                    <div class="logo-footer">
+                        <i class="fas fa-cube"></i>
+                        <span>HEX Digital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Detail Modal -->
+    <div class="modal" id="clientModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Client details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 HEX Digital Solutions. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBWYI7mllS34T4Ue56OWSrl8luq0atheTU",
+    authDomain: "new-hex.firebaseapp.com",
+    projectId: "new-hex",
+    storageBucket: "new-hex.firebasestorage.app",
+    messagingSenderId: "614032021854",
+    appId: "1:614032021854:web:6b3b13e082e4e2ec4d57cf",
+    measurementId: "G-NXQE87P24L"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
+
+</html>

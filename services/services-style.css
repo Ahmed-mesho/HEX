@@ -1,0 +1,220 @@
+/* ================= Service Pages (Branding etc.) ================= */
+
+div.new {
+  position: relative;
+}
+
+.service-page-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.service-page-hero {
+  width: 100%;
+  height: 60vh;
+  min-height: 420px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.service-page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.75) 0%,
+    rgba(118, 75, 162, 0.55) 45%,
+    rgba(245, 87, 108, 0.35) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #fff;
+}
+
+.service-page-title {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  margin-bottom: 0.8rem;
+}
+
+.service-page-subtitle {
+  font-size: 1.05rem;
+  max-width: 780px;
+  line-height: 1.8;
+  opacity: 0.98;
+}
+
+/* Main layout */
+.service-page {
+  padding: 4.5rem 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-page-main {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.service-page-left {
+  position: relative;
+}
+
+.service-page-left-img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+}
+
+.service-page-right {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+.dark-mode .service-page-right {
+  background: rgba(42, 42, 78, 0.88);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
+}
+
+.service-page-right-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--light-text);
+}
+
+.service-page-right-desc {
+  color: #666;
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+.dark-mode .service-page-right-title,
+.dark-mode .service-page-right-desc {
+  color: var(--dark-text);
+}
+
+.service-page-full-desc {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.08) 0%,
+    rgba(245, 87, 108, 0.07) 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
+  padding: 2.2rem 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.dark-mode .service-page-full-desc {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.12) 0%,
+    rgba(245, 87, 108, 0.10) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.service-page-full-desc h3 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.service-page-full-desc p {
+  color: #666;
+  line-height: 1.95;
+  font-size: 1rem;
+}
+
+.dark-mode .service-page-full-desc p {
+  color: #bbb;
+}
+
+.service-page-clients {
+  margin-bottom: 1.8rem;
+}
+
+.service-page-clients h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.service-page-clients-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.service-page-client {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--light-text);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+}
+
+.dark-mode .service-page-client {
+  background: rgba(42, 42, 78, 0.88);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--dark-text);
+}
+
+.service-page-client:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.12);
+}
+
+.service-page-back {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Use existing .view-btn if present; add spacing niceness here */
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .service-page-main {
+    grid-template-columns: 1fr;
+  }
+
+  .service-page-left-img {
+    max-height: 320px;
+  }
+
+  .service-page-clients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-page {
+    padding-top: 3.2rem;
+  }
+}
+
