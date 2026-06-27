@@ -542,116 +542,253 @@ function updateCarousel() {
 }
 
 // ============ CLIENTS CAROUSEL ============
-let currentClientSlide = 0;
 let clientAutoPlayInterval;
+let clientsData = [
+
+    {
+        name: 'TechCorp Inc.',
+        industry: 'Technology',
+        project: 'Custom ERP System',
+        description: 'We developed a comprehensive ERP system that streamlined their operations and increased efficiency by 45%.',
+        image: '<i class="fas fa-building"></i>'
+    },
+    {
+        name: 'RetailHub',
+        industry: 'E-Commerce',
+        project: 'Online Store Platform',
+        description: 'Built a modern e-commerce platform that increased their sales by 200% in the first year.',
+        image: '<i class="fas fa-store"></i>'
+    },
+    {
+        name: 'EduPlatform',
+        industry: 'Education',
+        project: 'Learning Management System',
+        description: 'Created an innovative LMS that serves over 10,000 students worldwide.',
+        image: '<i class="fas fa-university"></i>'
+    },
+    {
+        name: 'HealthCare Pro',
+        industry: 'Healthcare',
+        project: 'Patient Management App',
+        description: 'Developed a secure patient management system used by 50+ clinics.',
+        image: '<i class="fas fa-hospital"></i>'
+    },
+    {
+        name: 'FoodDelivery+',
+        industry: 'Food & Beverage',
+        project: 'Multi-platform Delivery App',
+        description: 'Built an app connecting thousands of restaurants with customers across 5 cities.',
+        image: '<i class="fas fa-utensils"></i>'
+    },
+    {
+        name: 'ConsultPro',
+        industry: 'Consulting',
+        project: 'Business Intelligence Platform',
+        description: 'Created a BI platform providing real-time insights to enterprise clients.',
+        image: '<i class="fas fa-suitcase"></i>'
+    }
+];
+
+let clientsState = {
+    index: 0,
+    perView: 1,
+    step: 1,
+    gap: 32, // will be recalculated
+    cardWidth: 200 // will be recalculated
+};
 
 function initializeClients() {
-    const clientSlides = document.querySelectorAll('.clients-slide');
-    const slideCount = clientSlides.length;
+    const carousel = document.getElementById('clientsCarousel');
+    const track = document.getElementById('clientsTrack');
+    const prevBtn = document.getElementById('clientsPrev');
+    const nextBtn = document.getElementById('clientsNext');
 
-    function showClientSlide(n) {
-        clientSlides.forEach((slide, index) => {
-            slide.classList.toggle('active', index === n);
+    // Page may not have clients section (e.g., if script used elsewhere)
+    if (!carousel || !track) return;
+
+    // Build cards dynamically (easy to add more clients)
+    track.innerHTML = '';
+    clientsData.forEach((client, idx) => {
+        const item = document.createElement('div');
+        item.className = 'client-item';
+        item.dataset.clientIndex = String(idx);
+        item.innerHTML = `
+            <div class="client-card">
+                <div class="client-logo">${client.image}</div>
+                <h4>${client.name}</h4>
+            </div>
+        `;
+
+        item.addEventListener('click', () => {
+            stopClientAutoplay();
+            showClientDetail(idx);
         });
-        currentClientSlide = n;
+
+        track.appendChild(item);
+    });
+
+    const onResize = () => {
+        computeMeasurements();
+        // Keep current index in range after resize
+        const maxIndex = Math.max(0, clientsData.length - clientsState.perView);
+        clientsState.index = Math.min(clientsState.index, maxIndex);
+        render();
+    };
+
+    function computeMeasurements() {
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+        clientsState.gap = gap;
+
+        // Determine perView from container width
+        const containerWidth = carousel.clientWidth;
+        // Choose breakpoints that match card min-width/visual spacing
+        let perView = 1;
+        if (containerWidth >= 1000) perView = 4;
+        else if (containerWidth >= 700) perView = 3;
+        else if (containerWidth >= 480) perView = 2;
+        else perView = 1;
+
+        clientsState.perView = perView;
+        clientsState.step = 1; // move one card at a time for smoother feel
+
+        const firstCard = track.querySelector('.client-item');
+        if (firstCard) {
+            clientsState.cardWidth = firstCard.getBoundingClientRect().width;
+        }
     }
 
-    function startAutoPlay() {
-        clientAutoPlayInterval = setInterval(() => {
-            showClientSlide((currentClientSlide + 1) % slideCount);
-        }, 5000);
+    function render() {
+        // Max start index so that at least perView cards are visible
+        const maxIndex = Math.max(0, clientsData.length - clientsState.perView);
+        clientsState.index = Math.max(0, Math.min(clientsState.index, maxIndex));
+
+        const offset = clientsState.index * (clientsState.cardWidth + clientsState.gap);
+        const rtl = document.body.classList.contains('rtl');
+
+        // In RTL, visually it should move opposite direction
+        const transform = rtl ? `translateX(${offset}px)` : `translateX(${-offset}px)`;
+        track.style.transform = transform;
     }
 
-    function stopAutoPlay() {
+    function stopClientAutoplay() {
         clearInterval(clientAutoPlayInterval);
+        clientAutoPlayInterval = undefined;
     }
 
-    document.getElementById('clientsNext')?.addEventListener('click', () => {
-        stopAutoPlay();
-        showClientSlide((currentClientSlide + 1) % slideCount);
-        startAutoPlay();
+    function startClientAutoplay() {
+        stopClientAutoplay();
+        clientAutoPlayInterval = setInterval(() => {
+            // loop: if we reach the end, go back to the beginning
+            const maxIndex = Math.max(0, clientsData.length - clientsState.perView);
+            clientsState.index = clientsState.index >= maxIndex ? 0 : clientsState.index + clientsState.step;
+            render();
+        }, 4500);
+    }
+
+
+    prevBtn?.addEventListener('click', () => {
+        stopClientAutoplay();
+        clientsState.index = clientsState.index - clientsState.step;
+        render();
+        startClientAutoplay();
     });
 
-    document.getElementById('clientsPrev')?.addEventListener('click', () => {
-        stopAutoPlay();
-        showClientSlide((currentClientSlide - 1 + slideCount) % slideCount);
-        startAutoPlay();
+    nextBtn?.addEventListener('click', () => {
+        stopClientAutoplay();
+        clientsState.index = clientsState.index + clientsState.step;
+        render();
+        startClientAutoplay();
     });
 
-    // Add click event to client cards to show details
-    clientSlides.forEach((slide, index) => {
-        slide.addEventListener('click', () => {
-            stopAutoPlay();
-            showClientDetail(index);
-        });
+    // Optional: drag / swipe
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragDeltaX = 0;
+
+    carousel.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragDeltaX = 0;
+        carousel.setPointerCapture(e.pointerId);
+        stopClientAutoplay();
     });
 
-    showClientSlide(0);
-    startAutoPlay();
+    carousel.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        dragDeltaX = e.clientX - dragStartX;
+        // Do not overcomplicate: just apply immediate transform for feedback
+        const rtl = document.body.classList.contains('rtl');
+        const baseIndex = clientsState.index;
+        const offsetBase = baseIndex * (clientsState.cardWidth + clientsState.gap);
+        const liveOffset = rtl ? offsetBase + dragDeltaX : offsetBase + dragDeltaX;
+        track.style.transform = rtl ? `translateX(${liveOffset}px)` : `translateX(${-liveOffset}px)`;
+    });
+
+    carousel.addEventListener('pointerup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        // Decide whether to move to next/prev based on delta
+        const threshold = Math.max(40, clientsState.cardWidth * 0.25);
+        const rtl = document.body.classList.contains('rtl');
+
+        if (Math.abs(dragDeltaX) > threshold) {
+            // In RTL, swipe direction is reversed visually
+            const shouldGoNext = rtl ? dragDeltaX > 0 : dragDeltaX < 0;
+            clientsState.index = shouldGoNext ? clientsState.index + clientsState.step : clientsState.index - clientsState.step;
+        }
+
+        render();
+        startClientAutoplay();
+    });
+
+    // init
+    computeMeasurements();
+    clientsState.index = 0;
+    render();
+    startClientAutoplay();
+    window.addEventListener('resize', onResize);
 }
 
 function showClientDetail(index) {
-    const clients = [
-        {
-            name: 'TechCorp Inc.',
-            industry: 'Technology',
-            project: 'Custom ERP System',
-            description: 'We developed a comprehensive ERP system that streamlined their operations and increased efficiency by 45%.',
-            image: '<i class="fas fa-building"></i>'
-        },
-        {
-            name: 'RetailHub',
-            industry: 'E-Commerce',
-            project: 'Online Store Platform',
-            description: 'Built a modern e-commerce platform that increased their sales by 200% in the first year.',
-            image: '<i class="fas fa-store"></i>'
-        },
-        {
-            name: 'EduPlatform',
-            industry: 'Education',
-            project: 'Learning Management System',
-            description: 'Created an innovative LMS that serves over 10,000 students worldwide.',
-            image: '<i class="fas fa-university"></i>'
-        },
-        {
-            name: 'HealthCare Pro',
-            industry: 'Healthcare',
-            project: 'Patient Management App',
-            description: 'Developed a secure patient management system used by 50+ clinics.',
-            image: '<i class="fas fa-hospital"></i>'
-        },
-        {
-            name: 'FoodDelivery+',
-            industry: 'Food & Beverage',
-            project: 'Multi-platform Delivery App',
-            description: 'Built an app connecting thousands of restaurants with customers across 5 cities.',
-            image: '<i class="fas fa-utensils"></i>'
-        },
-        {
-            name: 'ConsultPro',
-            industry: 'Consulting',
-            project: 'Business Intelligence Platform',
-            description: 'Created a BI platform providing real-time insights to enterprise clients.',
-            image: '<i class="fas fa-suitcase"></i>'
-        }
-    ];
+    const client = clientsData[index];
+    if (!client) return;
 
-    const client = clients[index];
     const modal = document.getElementById('clientModal');
     const modalBody = document.getElementById('modalBody');
+    if (!modal || !modalBody) return;
+
+    // Dynamic details (use values from clientsData)
+    const industry = client.industry || '';
+    const project = client.project || '';
+    const description = client.description || '';
 
     modalBody.innerHTML = `
         <div style="text-align: center; margin-bottom: 2rem;">
             <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                ${client.image}
+                ${client.image || ''}
             </div>
-            <h2>${client.name}</h2>
-            <p style="color: #666; margin-top: 0.5rem;">${client.industry}</p>
+            <h2>${client.name || ''}</h2>
+            <p style="color: #666; margin-top: 0.5rem;">${industry}</p>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-            <h3 style="margin-bottom: 0.5rem;">Project: ${client.project}</h3>
-            <p style="color: #666; line-height: 1.6;">${client.description}</p>
+
+        <div style="margin-bottom: 1.25rem;">
+            <h3 style="margin-bottom: 0.5rem;">${project ? 'Project' : ''}: ${project}</h3>
+            <p style="color: #666; line-height: 1.6;">${description}</p>
         </div>
+
+        <div style="margin-bottom: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="background: rgba(102, 126, 234, 0.08); padding: 1rem; border-radius: 10px;">
+                <strong style="display:block; color: var(--primary-color); margin-bottom: .35rem;">Company</strong>
+                <span style="color:#666;">${client.name || ''}</span>
+            </div>
+            <div style="background: rgba(245, 87, 108, 0.08); padding: 1rem; border-radius: 10px;">
+                <strong style="display:block; color: var(--accent-color); margin-bottom: .35rem;">Status</strong>
+                <span style="color:#666;">Active</span>
+            </div>
+        </div>
+
         <div style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white; padding: 1rem; border-radius: 10px; text-align: center;">
             <strong>Partnership Status: Active</strong>
         </div>
@@ -659,6 +796,8 @@ function showClientDetail(index) {
 
     modal.style.display = 'block';
 }
+
+
 
 // ============ NAVIGATION ============
 function initializeNavigation() {
